@@ -9,7 +9,16 @@
       </router-link>
     </div>
     <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-      <img :src="project.image" alt="Project image" class="w-full h-64 object-cover">
+      <figure class="w-full flex max-w-screen-xl">
+        <img 
+          v-for="img in project.image"
+          :src="img"
+          alt="Project image"
+          class="w-full h-64 object-contain cursor-pointer"
+          :title="img"
+          @click="openImage(img)"
+        />
+      </figure>
       <div class="p-8">
         <h1 class="text-3xl font-bold mb-4">{{ project.name }}</h1>
         <p class="text-gray-600">{{ project.description }}</p>
@@ -25,7 +34,7 @@ import { useRoute } from 'vue-router'
 interface Project {
   id: number;
   name: string;
-  image: string;
+  image: string[];
   description: string;
   link?: string;
 }
@@ -45,7 +54,10 @@ export default defineComponent({
         {
           id: 2,
           name: 'One Tap Signin',
-          image: 'link-to-image-2.jpg',
+          image: [
+            '/ss1.png',
+            '/ss2.png'
+          ],
           description: 'Signin handler with a google button made with jetpack compose. It allows users to signin with their google account with a single tap. Made with SDK/API 34 and Android 13'
         },
         {
@@ -54,9 +66,13 @@ export default defineComponent({
           image: 'link-to-image-3.jpg',
           description: 'OCR-based App for information scanning. Made with Jetpack Compose and ML-Kit, it allows users to scan and extract information from receipts, invoices, and other documents.'
         },
-        // Add more projects as needed
       ] as Project[],
       project: {} as Project
+    }
+  },
+  methods: {
+    openImage(img: string) {
+      window.open(img, '_blank')
     }
   },
   created() {

@@ -38,7 +38,7 @@ export default defineComponent({
     return {
       projects: [
         { id: 1, name: 'CRUD Cars', shortDescription: 'Car management CRUD made with Android XML', image: '' },
-        { id: 2, name: 'One Tap Signin', shortDescription: 'Signin handler with a google button made with jetpack compose', image: '' },
+        { id: 2, name: 'One Tap Signin', shortDescription: 'Signin handler with a google button made with jetpack compose', image: '/ss1.png' },
         { id: 3, name: 'Finance Manager', shortDescription: 'OCR-based App for information scanning', image: '' }
       ] as Project[]
     }

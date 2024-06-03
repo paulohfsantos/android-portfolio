@@ -1,5 +1,13 @@
 <template>
-  <div class="container mx-auto px-4 py-8">
+  <div class="container mx-auto max-w-screen-xl px-4 py-8">
+    <div class="mb-4">
+      <router-link to="/" class="text-blue-500 hover:underline flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7 7-7m8 14l-7-7 7-7" />
+        </svg>
+        Back to Projects
+      </router-link>
+    </div>
     <div class="bg-white shadow-lg rounded-lg overflow-hidden">
       <img :src="project.image" alt="Project image" class="w-full h-64 object-cover">
       <div class="p-8">
@@ -19,6 +27,7 @@ interface Project {
   name: string;
   image: string;
   description: string;
+  link?: string;
 }
 
 export default defineComponent({
@@ -26,8 +35,25 @@ export default defineComponent({
   data() {
     return {
       projects: [
-        { id: 1, name: 'Project 1', image: 'link-to-image-1.jpg', description: 'Description of project 1' },
-        { id: 2, name: 'Project 2', image: 'link-to-image-2.jpg', description: 'Description of project 2' },
+        { 
+          id: 1,
+          name: 'CRUD Cars',
+          image: 'link-to-image-1.jpg',
+          description: 'project made with Android XML for car management CRUD. It allows you to create, read, update, and delete cars and storing them in a SQLite database.',
+          link: 'https://github.com/paulohfsantos/crud-kotlin-cars'
+        },
+        {
+          id: 2,
+          name: 'One Tap Signin',
+          image: 'link-to-image-2.jpg',
+          description: 'Signin handler with a google button made with jetpack compose. It allows users to signin with their google account with a single tap. Made with SDK/API 34 and Android 13'
+        },
+        {
+          id: 3,
+          name: 'Finance Manager',
+          image: 'link-to-image-3.jpg',
+          description: 'OCR-based App for information scanning. Made with Jetpack Compose and ML-Kit, it allows users to scan and extract information from receipts, invoices, and other documents.'
+        },
         // Add more projects as needed
       ] as Project[],
       project: {} as Project
